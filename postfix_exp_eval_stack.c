@@ -2,22 +2,18 @@
 #define SIZE 100
 #include <ctype.h>
 #include <stdio.h>
-int s[SIZE];
-int top =-1;
-void push(int elem)
-{
-	s[++top] = elem;
-}
 
-int pop()
-{
-	return(s[top--]);
-}
+int s[SIZE];
+int top = -1;
+
+void push(int elem);
+int pop();
+
 int main(void)
 {
 	char pofx[50], ch;
 	int i = 0, op1, op2;
-	printf("Enter the Postfix Expression: \n");
+	printf("Enter the Postfix Expression: ");
 	scanf("%s", pofx);
 	while((ch = pofx[i++]) != '\0')
 	{
@@ -49,7 +45,17 @@ int main(void)
 			}
 		}
 	}
-	printf("Given Postfix Expression: %s", pofx);
+	printf("\nGiven Postfix Expression: %s", pofx);
 	printf("\nResult after Evaluation: %d", s[top]);
 	printf("\n");
+}
+
+void push(int elem)
+{
+	s[++top] = elem;
+}
+
+int pop()
+{
+	return(s[top--]);
 }
